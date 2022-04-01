@@ -16,7 +16,7 @@ pipeline {
                 scannerHome = tool 'SONAR_SCANNER'
             }
             steps {
-                withSonarQubeEnv('SONAR_LOCAL-QG'){
+                withSonarQubeEnv('SONAR_LOCAL'){
                     bat "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeployBack -Dsonar.host.url=http://localhost:9000 -Dsonar.login=7497edb198aa9e12d459538bff0d0304dffc0022 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/model/**,**Application.java"
                 }
 
