@@ -43,6 +43,15 @@ pipeline {
                 }
             }
         }
+        stage ('Deploy Front-End'){
+            steps {
+                dir('front-end'){
+                    git credentialsId: 'Login_Github', url: 'https://github.com/GuiJabour/tasks-frontend'
+                    bat 'mvn clean package -DskipTests=true'
+                    deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+                }
+            }
+        }
     }
 }
 
