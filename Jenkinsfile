@@ -62,9 +62,9 @@ pipeline {
         }
         stage ('Deploy Prod'){
             steps {
-                bat 'docker rm backend-prod'
-                bat 'docker rm pg-prod'
-                bat 'docker rm frontend-prod'
+                //bat 'docker rm backend-prod'
+                ///bat 'docker rm pg-prod'
+                //bat 'docker rm frontend-prod'
                 bat 'docker-compose build'
                 bat 'docker-compose up -d'
             }
